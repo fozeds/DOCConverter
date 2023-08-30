@@ -1,4 +1,4 @@
-#./RICAP/remove_md.py
+# ./RICAP/remove_md.py
 
 import re
 from os import remove
@@ -31,7 +31,7 @@ class controlmark():
         for line in lines:
             line = self.remove_nonalpha(line)
             line = self.remove_control_marks(line)
-            with open(path_from_archive[0:-4]+"_NoMarks", "a") as new:
+            with open(path_from_archive+"_NoMarks", "a") as new:
                 new.write(line+"\n")
 
     def rem_fromallfiles(self, path: str) -> None:

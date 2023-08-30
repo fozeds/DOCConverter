@@ -9,7 +9,7 @@ REMOVE_PAGE_SENSOR = "0 RECLAMANTES E    0 RECLAMATORIAS"
 AUX_REMOVE_PAGE = "0 RECLAMANTES E    0 DEPOSITOS"
 
 
-def remove_blankpage(path_: str, param_="Gpr"):
+def remove_blankpage(path_: str, param_=".txt") -> None:
 
     file_list = converter()
     file_list.map_path(path_, printer=None, param=param_)
@@ -33,9 +33,8 @@ def remove_blankpage(path_: str, param_="Gpr"):
         if len(pages) == 0:
             remove_file(relatory)
             continue
-        data = pages[0][pages[0].index("BASE:")+6:pages[0].index("BASE:")+16]
-        data = data[:3]+data[-5:]
-        data = data.replace("/", "_")
+        data = pages[0][pages[0].index("BASE:")+6:pages[0].index("BASE:")+20].strip()
+        data = data[:3]+"_"+data[-4:]
         remove_file(relatory)
         teste = open(f"{relatory[0:-4]}_{data}", "at")
         teste.write("".join(pages))
