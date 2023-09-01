@@ -20,7 +20,7 @@ class converter():
 
     def convert(self) -> None:
         for archive in self.arch_list:
-            output_name = archive + self.output
+            output_name = archive[:-8] + self.output
             with open(archive, 'r', encoding='utf-8') as file:
                 content = file.read()
             lines = content.splitlines()

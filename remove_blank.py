@@ -36,7 +36,7 @@ def remove_blankpage(path_: str, param_=".txt") -> None:
         data = pages[0][pages[0].index("BASE:")+6:pages[0].index("BASE:")+20].strip()
         data = data[:3]+"_"+data[-4:]
         remove_file(relatory)
-        teste = open(f"{relatory[0:-4]}_{data}", "at")
+        teste = open(f"{relatory[0:-4]}_{data}_NB", "at")
         teste.write("".join(pages))
 
 

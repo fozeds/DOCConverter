@@ -12,8 +12,6 @@ class controlmark():
         self.controlmark_to_remove = (
             "l1Ol1Ss20Hl8D",
             "s0B",
-            "s4B2",
-            "s4B"
         )
         self.nonalpha = r"[^a-zA-Z0-9\s:|.,/+-_ ]"
 
@@ -31,12 +29,12 @@ class controlmark():
         for line in lines:
             line = self.remove_nonalpha(line)
             line = self.remove_control_marks(line)
-            with open(path_from_archive+"_NoMarks", "a") as new:
+            with open(path_from_archive[:-2]+"_NoMarks", "a") as new:
                 new.write(line+"\n")
 
     def rem_fromallfiles(self, path: str) -> None:
         arch_list = converter()
-        arch_list.map_path(path, param="Gpr")
+        arch_list.map_path(path, param="_NB")
         for file_path in arch_list.arch_list:
             self.rem_fromarchive(file_path)
             remove(file_path)
